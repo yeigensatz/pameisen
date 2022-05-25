@@ -13,7 +13,7 @@
     </head>
 
     <body>
-        <a href="#modal" role="button" class="button button__link">Komplexe Zahl zu Polarform</a>
+        <a href="#modal" role="button" class="button button__link" id="komptopform-btn">Komplexe Zahl zu Polarform</a>
 
         <div class="modal-wrapper" id="modal">
             <div class="modal-body card">
@@ -51,6 +51,8 @@
                     document.getElementById('numtopformAns').innerHTML = y + "e<sup>-i*<sup>π</sup>&frasl;<sub>2</sub></sup>";
                 } else if (x > 0) {
                     document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + (Math.round(Math.atan(y / x) * 100) / 100) + "</sup>"
+                } else if (x < 0) {
+                    document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + (Math.round(Math.atan(y / x) * 100) / 100) + Math.PI + "</sup>"
                 }
             }
         </script>

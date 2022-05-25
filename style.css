@@ -296,3 +296,8 @@ code {
 .button__link {
     text-decoration: none;
 }
+
+#komptopform-btn{
+    transform: translateX(-20%);
+    transform: translateY(-10%);
+}
