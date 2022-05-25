@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pameisen</title>
+        <link rel="shortcut icon" href="mauchi.png" type="image/x-icon" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
+        <link rel="stylesheet" href="style.css" />
+        </script>
+    </head>
+
+    <body>
+        <a href="#modal" role="button" class="button button__link">Komplexe Zahl zu Polarform</a>
+
+        <div class="modal-wrapper" id="modal">
+            <div class="modal-body card">
+                <div class="modal-header">
+                    <h2 class="heading">Komplexe Zahl zur Polarform</h2>
+                    <a href="#!" role="button" class="close" aria-label="close this modal">
+                    </a>
+                </div>
+                <p id="numtopform">
+                    <div>
+                        <form>
+                            <p>Normalform: x+yi</p>
+                            <p>x: <input type="text" id="numtopform-x" placeholder="x"></p>
+                            <p>y: <input type="text" id="numtopform-y" placeholder="y"></p>
+                            <input type="button" onclick="numtopformCalc()" value="Calculate">
+                            <p id="numtopformAns">Antwort</p>
+
+                        </form>
+                    </div>
+
+                </p>
+            </div>
+            <a href="#!" class="outside-trigger"></a>
+        </div>
+
+        <script>
+            function numtopformCalc() {
+                x = parseFloat(document.getElementById('numtopform-x').value);
+                y = parseFloat(document.getElementById('numtopform-y').value);
+                if (x == 0 && y == 0) {
+                    document.getElementById('numtopformAns').innerHTML = "r=0, ϕ n.d";
+                } else if (x == 0 && y > 0) {
+                    document.getElementById('numtopformAns').innerHTML = y + "e<sup>i*<sup>π</sup>&frasl;<sub>2</sub></sup>";
+                } else if (x == 0 && y < 0) {
+                    document.getElementById('numtopformAns').innerHTML = y + "e<sup>-i*<sup>π</sup>&frasl;<sub>2</sub></sup>";
+                } else if (x > 0) {
+                    document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + (Math.round(Math.atan(y / x) * 100) / 100) + "</sup>"
+                }
+            }
+        </script>
+    </body>
+
+    </ht
