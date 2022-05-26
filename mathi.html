@@ -82,12 +82,15 @@
                     var ata = (Math.round(Math.atan(y / x) * 100) / 100);
                     console.log(ata);
                     ata = ata * 100;
-                    document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + findGCD(ata) + "</sup>";
+                    document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + Math.round(ata) + "π</sup>&frasl;<sub>100</sub></sup>";
 
                     console.log((Math.round(Math.atan(y / x) * 100) / 100))
                     console.log(ata)
                 } else if (x < 0) {
-                    document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + (Math.round(Math.atan(y / x) * 100) / 100) + Math.PI + "</sup>"
+                    var ata = (Math.round(Math.atan(y / x) * 100) / 100);
+                    console.log(ata);
+                    ata = ata * 100;
+                    document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + ata + "π</sup>&frasl;<sub>100</sub></sup>"
                 }
             }
         </script>
