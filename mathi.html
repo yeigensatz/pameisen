@@ -69,6 +69,37 @@
                 };
             }
 
+            function kuerzen33(Zaehler, Nenner)
+                {
+                
+                var Zaehler33 = parseInt(Zaehler);
+                var Nenner33 = parseInt(Nenner);
+
+                var Teiler33 = 1;
+
+                if(Zaehler33+""=="NaN")
+                    Zaehler33 = 0;
+                if(Nenner33+""=="NaN")
+                    Nenner33 = 0;
+
+                var ZaehlerG33 = Zaehler33;
+                var NennerG33 = Nenner33;
+
+                while(Teiler33<ZaehlerG33&&Teiler33<NennerG33)
+                {
+                    Teiler33++;
+
+                        if(ZaehlerG33%Teiler33==0&&NennerG33%Teiler33==0)
+                        {
+                        ZaehlerG33 = ZaehlerG33/Teiler33;
+                        NennerG33 = NennerG33/Teiler33;
+                        Teiler33 = 1;
+                        }
+                }
+                console.log("Z,N",ZaehlerG33,NennerG33);
+                return [ZaehlerG33,NennerG33];
+            }
+
             function numtopformCalc() {
                 x = parseFloat(document.getElementById('numtopform-x').value);
                 y = parseFloat(document.getElementById('numtopform-y').value);
@@ -77,22 +108,39 @@
                 } else if (x == 0 && y > 0) {
                     document.getElementById('numtopformAns').innerHTML = y + "e<sup>i*<sup>π</sup>&frasl;<sub>2</sub></sup>";
                 } else if (x == 0 && y < 0) {
-                    document.getElementById('numtopformAns').innerHTML = y + "e<sup>-i*<sup>π</sup>&frasl;<sub>2</sub></sup>";
+                    document.getElementById('numtopformAns').innerHTML = -y + "e<sup>-i*<sup>π</sup>&frasl;<sub>2</sub></sup>";
                 } else if (x > 0) {
                     var ata = (Math.round(Math.atan(y / x) * 100) / 100);
                     console.log(ata);
                     ata = ata * 100;
-                    document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + Math.round(ata) + "π</sup>&frasl;<sub>100</sub></sup>";
+                    if (y>0){
+                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + kuerzen33((ata/3.14),100)[0] + "&frasl;"+ kuerzen33((ata/3.14),100)[1] +"π</sup>";
+                    }
+                    else if (y<0){
+                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>-i*" + kuerzen33((-ata/3.14),100)[0] + "&frasl;"+ kuerzen33((-ata/3.14),100)[1] +"π</sup>";
+                    }
+                    else{
+                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + "0" +"π</sup>";
+                    }
 
-                    console.log((Math.round(Math.atan(y / x) * 100) / 100))
-                    console.log(ata)
                 } else if (x < 0) {
                     var ata = (Math.round(Math.atan(y / x) * 100) / 100);
                     console.log(ata);
                     ata = ata * 100;
-                    document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + ata + "π</sup>&frasl;<sub>100</sub></sup>"
+                    if (y>0){
+                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + (parseInt(kuerzen33((-ata/3.14),100)[0])+parseInt(kuerzen33((-ata/3.14),100)[1]/2)) + "&frasl;"+ kuerzen33((-ata/3.14),100)[1] +"π</sup>";
+                    }
+                    else if (y<0){
+                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>-i*" + (parseInt(kuerzen33((ata/3.14),100)[0])+parseInt(kuerzen33((ata/3.14),100)[1]/2)) + "&frasl;"+ kuerzen33((ata/3.14),100)[1] +"π</sup>";
+                    }
+                    else{
+                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + "0" +"π</sup>";
+                    //document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + ata + "π</sup>&frasl;<sub>100</sub></sup>"
                 }
             }
+        }
+            
+
         </script>
     </body>
 
