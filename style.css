@@ -259,23 +259,23 @@ code {
     top: 0;
 }
 
-#modal {
+#komptopform {
     opacity: 0;
     transition: opacity 0.25s ease-in-out;
     visibility: hidden;
 }
 
-#modal:target {
+#komptopform:target {
     opacity: 1;
     visibility: visible;
 }
 
-#modal:target .modal-body {
+#komptopform:target .modal-body {
     opacity: 1;
     transform: translateY(1);
 }
 
-#modal .modal-body {
+#komptopform .komptopform-body {
     max-width: 500px;
     opacity: 0;
     transform: translateY(-100px);
@@ -283,6 +283,34 @@ code {
     width: 100%;
     z-index: 1;
 }
+
+#polarformrechner {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    visibility: hidden;
+}
+
+#polarformrechner:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+#polarformrechner:target .modal-body {
+    opacity: 1;
+    transform: translateY(1);
+}
+
+#polarformrechner .komptopform-body {
+    max-width: 500px;
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: opacity 0.25s ease-in-out;
+    width: 100%;
+    z-index: 1;
+}
+
+
+
 
 .outside-trigger {
     bottom: 0;
@@ -300,4 +328,11 @@ code {
 #komptopform-btn{
     transform: translateX(-20%);
     transform: translateY(-10%);
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+th, td {
+    padding: 15px;
 }

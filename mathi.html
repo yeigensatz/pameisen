@@ -13,9 +13,21 @@
     </head>
 
     <body>
-        <a href="#modal" role="button" class="button button__link" id="komptopform-btn">Komplexe Zahl zu Polarform</a>
 
-        <div class="modal-wrapper" id="modal">
+
+        <table>
+            <tr>
+                <td>
+                    <a href="#komptopform" role="button" class="button button__link" id="komptopform-btn">Komplexe Zahl zu Polarform</a>
+                </td>
+                <td>
+                    <a href="#polarformrechner" role="button" class="button button__link" id="polarformrechner-btn">Polarformrechner</a>
+                </td>
+            </tr>
+        </table>
+
+
+        <div class="modal-wrapper" id="komptopform">
             <div class="modal-body card">
                 <div class="modal-header">
                     <h2 class="heading">Komplexe Zahl zur Polarform</h2>
@@ -26,8 +38,8 @@
                     <div>
                         <form>
                             <p>Normalform: x+yi</p>
-                            <p>x: <input type="text" id="numtopform-x" placeholder="x"></p>
-                            <p>y: <input type="text" id="numtopform-y" placeholder="y"></p>
+                            <p>x: <input type="number" id="numtopform-x" placeholder="x"></p>
+                            <p>y: <input type="number" id="numtopform-y" placeholder="y"></p>
                             <input type="button" onclick="numtopformCalc()" value="Calculate">
                             <p id="numtopformAns">Antwort</p>
 
@@ -37,38 +49,44 @@
                 </p>
             </div>
             <a href="#!" class="outside-trigger"></a>
-        </div>
+
+            <div class="modal-wrapper" id="polarformrechner">
+                <div class="modal-body card">
+                    <div class="modal-header">
+                        <h2 class="heading">Polarformrechner</h2>
+                        <a href="#!" role="button" class="close" aria-label="close this modal">
+                        </a>
+                    </div>
+                    <p id="polarformrechner">
+                        <div>
+                            <form>
+                                <p>Polarform: r*e<sup>i*<sup>ϕ</sub></sup></p>
+                                <p>r: <input type="number" id="r-1" placeholder="r"></p>
+                                <p>ϕ: <input type="number" id="phi-1" placeholder="ϕ"></p>
+                                
+                                <select name="operations" id="operations">
+                                    <option value="plus">+</option>
+                                    <option value="minus">-</option>
+                                    <option value="multiply">*</option>
+                                    <option value="divide">/</option>
+                                </select>
+        
+                                <p>r: <input type="number" id="r-2" placeholder="r"></p>
+                                <p>ϕ: <input type="number" id="phi-2" placeholder="ϕ"></p>
+                                <input type="button" onclick="calculate()" value="Calculate">
+                                <p id="result">Antwort</p>
+                            </form>
+
+                        </div>
+    
+                    </p>
+                </div>
+                <a href="#!" class="outside-trigger"></a>
+            </div>
+
+        
 
         <script>
-            function findGCD(x) {
-                function gcd(a, b) {
-                    return (b) ? gcd(b, a % b) : a;
-                }
-                var decimalToFraction = function(_decimal) {
-                    if (_decimal == parseInt(_decimal)) {
-                        return {
-                            top: parseInt(_decimal),
-                            bottom: 1,
-                            display: parseInt(_decimal) + '/' + 1
-                        };
-                    } else {
-                        var top = _decimal.toString().includes(".") ? _decimal.toString().replace(/\d+[.]/, '') : 0;
-                        var bottom = Math.pow(10, top.toString().replace('-', '').length);
-                        if (_decimal >= 1) {
-                            top = +top + (Math.floor(_decimal) * bottom);
-                        } else if (_decimal <= -1) {
-                            top = +top + (Math.ceil(_decimal) * bottom);
-                        }
-
-                        var x = Math.abs(gcd(top, bottom));
-                        return {
-                            top: (top / x),
-                            bottom: (bottom / x)
-                        };
-                    }
-                };
-            }
-
             function kuerzen33(Zaehler, Nenner)
                 {
                 
@@ -136,10 +154,111 @@
                     else{
                         document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" +"π</sup>";
                     //document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + ata + "π</sup>&frasl;<sub>100</sub></sup>"
+                    }
                 }
             }
-        }
-            
+            function calculate() {
+                var op = (document.getElementById('operations').value);
+                if (op == "plus") {
+                    add();
+                } 
+                else if (op == "minus"){
+                    subtract();
+                }
+                else if (op == "multiply") {
+                    multiply();
+                }
+                else if (op == "divide") {
+                    divide();
+                }
+            }
+            function add() {
+                var r1 = parseFloat(document.getElementById('r-1').value);
+                var phi1 = parseFloat(document.getElementById('phi-1').value);
+                var r2 = parseFloat(document.getElementById('r-2').value);
+                var phi2 = parseFloat(document.getElementById('phi-2').value);
+                var x = getNormalformX(r1,phi1) + getNormalformX(r2,phi2);
+                var y = getNormalformY(r1,phi1) + getNormalformY(r2,phi2);
+
+                document.getElementById('result').innerHTML = getPolarform(x,y);
+            }
+            function subtract() {
+                var a = parseFloat(document.getElementById('r-1').value);
+                var b = parseFloat(document.getElementById('phi-1').value);
+                var x = parseFloat(document.getElementById('r-2').value);
+                var y = parseFloat(document.getElementById('phi-2').value);
+                document.getElementById('subtractAns').innerHTML = x - y;
+            }
+            function multiply() {
+                var a = parseFloat(document.getElementById('r-1').value);
+                var b = parseFloat(document.getElementById('phi-1').value);
+                var x = parseFloat(document.getElementById('r-2').value);
+                var y = parseFloat(document.getElementById('phi-2').value);
+                var expo = b + y;
+                if (expo<0) {
+                    document.getElementById('result').innerHTML = a*x + "e" + "<sup>-i*" + expo + "</sup>";
+                } else {
+                    document.getElementById('result').innerHTML = a*x + "e" + "<sup>i*" + expo + "</sup>";
+                }
+                
+            }
+            function divide() {
+                var r1 = parseFloat(document.getElementById('r-1').value);
+                var phi1 = parseFloat(document.getElementById('phi-1').value);
+                var r2 = parseFloat(document.getElementById('r-2').value);
+                var phi2 = parseFloat(document.getElementById('phi-2').value);
+                var expo = phi1 - phi2;
+                if (expo<0) {
+                    document.getElementById('result').innerHTML = a/x + "e" + "<sup>-i*" + expo + "</sup>";
+                } else {
+                    document.getElementById('result').innerHTML = a/x + "e" + "<sup>i*" + expo + "</sup>";
+                }
+            }
+            function getNormalformX(r, phi) {
+                var x = r * Math.cos(phi);
+                return x;
+            }
+            function getNormalformY(r, phi) {
+                var y = r * Math.sin(phi);
+                return y;
+            }
+            function getPolarform(x, y) {
+
+                if (x == 0 && y == 0) {
+                    return "r=0, ϕ n.d";
+                } else if (x == 0 && y > 0) {
+                    return y + "e<sup>i*<sup>π</sup>&frasl;<sub>2</sub></sup>";
+                } else if (x == 0 && y < 0) {
+                    return -y + "e<sup>-i*<sup>π</sup>&frasl;<sub>2</sub></sup>";
+                } else if (x > 0) {
+                    var ata = (Math.round(Math.atan(y / x) * 100) / 100);
+                    console.log(ata);
+                    ata = ata * 100;
+                    if (y>0){
+                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + kuerzen33((ata/3.14),100)[0] + "&frasl;"+ kuerzen33((ata/3.14),100)[1] +"π</sup>";
+                    }
+                    else if (y<0){
+                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>-i*" + kuerzen33((-ata/3.14),100)[0] + "&frasl;"+ kuerzen33((-ata/3.14),100)[1] +"π</sup>";
+                    }
+                    else{
+                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + "0" +"π</sup>";
+                    }
+
+                } else if (x < 0) {
+                    var ata = (Math.round(Math.atan(y / x) * 100) / 100);
+                    console.log(ata);
+                    ata = ata * 100;
+                    if (y>0){
+                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + (parseInt(kuerzen33((-ata/3.14),100)[0])+parseInt(kuerzen33((-ata/3.14),100)[1]/2)) + "&frasl;"+ kuerzen33((-ata/3.14),100)[1] +"π</sup>";
+                    }
+                    else if (y<0){
+                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>-i*" + (parseInt(kuerzen33((ata/3.14),100)[0])+parseInt(kuerzen33((ata/3.14),100)[1]/2)) + "&frasl;"+ kuerzen33((ata/3.14),100)[1] +"π</sup>";
+                    }
+                    else{
+                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" +"π</sup>";
+                    }
+                }
+            }
 
         </script>
     </body>
