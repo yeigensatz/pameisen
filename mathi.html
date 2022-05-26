@@ -9,22 +9,26 @@
         <link rel="shortcut icon" href="mauchi.png" type="image/x-icon" />
         <link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon" />
         <link rel="stylesheet" href="style.css" />
+        <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">-->
         </script>
     </head>
 
     <body>
-
-
-        <table>
-            <tr>
-                <td>
-                    <a href="#komptopform" role="button" class="button button__link" id="komptopform-btn">Komplexe Zahl zu Polarform</a>
-                </td>
-                <td>
-                    <a href="#polarformrechner" role="button" class="button button__link" id="polarformrechner-btn">Polarformrechner</a>
-                </td>
-            </tr>
-        </table>
+        <div class="container mx-auto max-width-md">
+            <table>
+                <tr>
+                    <td>
+                        <a href="#komptopform" role="button" class="button button__link" id="komptopform-btn">Komplexe Zahl zu Polarform</a>
+                    </td>
+                    <td>
+                        <a href="#polarformrechner" role="button" class="button button__link" id="polarformrechner-btn">Polarformrechner</a>
+                    </td>
+                    <td>
+                        <a href="#pformtokomp" role="button" class="button button__link" id="pformtocomp-btn">Polarform zu Komplexe Zahl</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
 
         <div class="modal-wrapper" id="komptopform">
@@ -32,6 +36,9 @@
                 <div class="modal-header">
                     <h2 class="heading">Komplexe Zahl zur Polarform</h2>
                     <a href="#!" role="button" class="close" aria-label="close this modal">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
+                        </svg>
                     </a>
                 </div>
                 <p id="numtopform">
@@ -47,14 +54,18 @@
                     </div>
 
                 </p>
+                <!--<a href="#!" class="outside-trigger"></a>-->
             </div>
-            <a href="#!" class="outside-trigger"></a>
+        </div>
 
             <div class="modal-wrapper" id="polarformrechner">
                 <div class="modal-body card">
                     <div class="modal-header">
                         <h2 class="heading">Polarformrechner</h2>
                         <a href="#!" role="button" class="close" aria-label="close this modal">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
+                            </svg>
                         </a>
                     </div>
                     <p id="polarformrechner">
@@ -81,11 +92,12 @@
     
                     </p>
                 </div>
-                <a href="#!" class="outside-trigger"></a>
+                <!--<a href="#!" class="outside-trigger"></a>-->
             </div>
 
-        
-
+        <!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>-->
         <script>
             function kuerzen33(Zaehler, Nenner)
                 {
@@ -183,11 +195,14 @@
                 document.getElementById('result').innerHTML = getPolarform(x,y);
             }
             function subtract() {
-                var a = parseFloat(document.getElementById('r-1').value);
-                var b = parseFloat(document.getElementById('phi-1').value);
-                var x = parseFloat(document.getElementById('r-2').value);
-                var y = parseFloat(document.getElementById('phi-2').value);
-                document.getElementById('subtractAns').innerHTML = x - y;
+                var r1 = parseFloat(document.getElementById('r-1').value);
+                var phi1 = parseFloat(document.getElementById('phi-1').value);
+                var r2 = parseFloat(document.getElementById('r-2').value);
+                var phi2 = parseFloat(document.getElementById('phi-2').value);
+                var x = getNormalformX(r1,phi1) - getNormalformX(r2,phi2);
+                var y = getNormalformY(r1,phi1) - getNormalformY(r2,phi2);
+
+                document.getElementById('result').innerHTML = getPolarform(x,y);
             }
             function multiply() {
                 var a = parseFloat(document.getElementById('r-1').value);
@@ -196,7 +211,7 @@
                 var y = parseFloat(document.getElementById('phi-2').value);
                 var expo = b + y;
                 if (expo<0) {
-                    document.getElementById('result').innerHTML = a*x + "e" + "<sup>-i*" + expo + "</sup>";
+                    document.getElementById('result').innerHTML = a*x + "e" + "<sup>-i*" + -expo + "</sup>";
                 } else {
                     document.getElementById('result').innerHTML = a*x + "e" + "<sup>i*" + expo + "</sup>";
                 }
@@ -209,9 +224,9 @@
                 var phi2 = parseFloat(document.getElementById('phi-2').value);
                 var expo = phi1 - phi2;
                 if (expo<0) {
-                    document.getElementById('result').innerHTML = a/x + "e" + "<sup>-i*" + expo + "</sup>";
+                    document.getElementById('result').innerHTML = r1/r2 + "e" + "<sup>-i*" + -expo + "</sup>";
                 } else {
-                    document.getElementById('result').innerHTML = a/x + "e" + "<sup>i*" + expo + "</sup>";
+                    document.getElementById('result').innerHTML = r1/r2 + "e" + "<sup>i*" + expo + "</sup>";
                 }
             }
             function getNormalformX(r, phi) {
@@ -223,7 +238,8 @@
                 return y;
             }
             function getPolarform(x, y) {
-
+                var x = parseInt(x);
+                var y = parseInt(y);
                 if (x == 0 && y == 0) {
                     return "r=0, ϕ n.d";
                 } else if (x == 0 && y > 0) {
