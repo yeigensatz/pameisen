@@ -234,15 +234,14 @@ code {
 }
 
 .close {
-	background: none;
-	border: none;
-	cursor: pointer;
-	display: flex;
-	height: 16px;
-	text-decoration: none;
-	width: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    height: 16px;
+    text-decoration: none;
+    width: 16px;
 }
-
 
 .modal-wrapper {
     align-items: center;
@@ -331,6 +330,30 @@ code {
     z-index: 1;
 }
 
+#gradbogenmass {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    visibility: hidden;
+}
+
+#gradbogenmass:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+#gradbogenmass:target .modal-body {
+    opacity: 1;
+    transform: translateY(1);
+}
+
+#gradbogenmass .komptopform-body {
+    max-width: 500px;
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: opacity 0.25s ease-in-out;
+    width: 100%;
+    z-index: 1;
+}
 
 .outside-trigger {
     bottom: 0;
@@ -339,4 +362,4 @@ code {
     position: fixed;
     right: 0;
     top: 0;
-  }
+}

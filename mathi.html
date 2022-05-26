@@ -27,6 +27,11 @@
                         <a href="#pformtokomp" role="button" class="button button__link" id="pformtocomp-btn">Polarform zu Komplexe Zahl</a>
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <a href="#gradbogenmass" role="button" class="button button__link" id="gradbogenmass-btn">Grad-Bogenmass Umrechner</a>
+                    </td>
+                </tr>
             </table>
         </div>
 
@@ -58,103 +63,121 @@
             </div>
         </div>
 
-            <div class="modal-wrapper" id="polarformrechner">
-                <div class="modal-body card">
-                    <div class="modal-header">
-                        <h2 class="heading">Polarformrechner</h2>
-                        <a href="#!" role="button" class="close" aria-label="close this modal">
-                            <svg viewBox="0 0 24 24">
+        <div class="modal-wrapper" id="polarformrechner">
+            <div class="modal-body card">
+                <div class="modal-header">
+                    <h2 class="heading">Polarformrechner</h2>
+                    <a href="#!" role="button" class="close" aria-label="close this modal">
+                        <svg viewBox="0 0 24 24">
                                 <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
                             </svg>
-                        </a>
-                    </div>
-                    <p id="polarformrechner">
-                        <div>
-                            <form>
-                                <p>Polarform: r*e<sup>i*<sup>ϕ</sub></sup></p>
-                                <p>r: <input type="number" id="r-1" placeholder="r"></p>
-                                <p>ϕ: <input type="number" id="phi-1" placeholder="ϕ"></p>
-                                
-                                <select name="operations" id="operations">
+                    </a>
+                </div>
+                <p id="polarformrechner">
+                    <div>
+                        <form>
+                            <p>Polarform: r*e<sup>i*<sup>ϕ</sub></sup></p>
+                            <p>r: <input type="number" id="r-1" placeholder="r"></p>
+                            <p>ϕ: <input type="number" id="phi-1" placeholder="ϕ"></p>
+
+                            <select name="operations" id="operations">
                                     <option value="plus">+</option>
                                     <option value="minus">-</option>
                                     <option value="multiply">*</option>
                                     <option value="divide">/</option>
                                 </select>
-        
-                                <p>r: <input type="number" id="r-2" placeholder="r"></p>
-                                <p>ϕ: <input type="number" id="phi-2" placeholder="ϕ"></p>
-                                <input type="button" onclick="calculate()" value="Calculate">
-                                <p id="result">Antwort</p>
-                            </form>
 
-                        </div>
-    
-                    </p>
-                </div>
-                <!--<a href="#!" class="outside-trigger"></a>-->
+                            <p>r: <input type="number" id="r-2" placeholder="r"></p>
+                            <p>ϕ: <input type="number" id="phi-2" placeholder="ϕ"></p>
+                            <input type="button" onclick="calculate()" value="Calculate">
+                            <p id="result">Antwort</p>
+                        </form>
+
+                    </div>
+
+                </p>
             </div>
+            <!--<a href="#!" class="outside-trigger"></a>-->
+        </div>
 
 
-            <div class="modal-wrapper" id="pformtokomp">
-                <div class="modal-body card">
-                    <div class="modal-header">
-                        <h2 class="heading">Polarform to Komplexe Zahl</h2>
-                        <a href="#!" role="button" class="close" aria-label="close this modal">
-                            <svg viewBox="0 0 24 24">
+        <div class="modal-wrapper" id="pformtokomp">
+            <div class="modal-body card">
+                <div class="modal-header">
+                    <h2 class="heading">Polarform to Komplexe Zahl</h2>
+                    <a href="#!" role="button" class="close" aria-label="close this modal">
+                        <svg viewBox="0 0 24 24">
                                 <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
                             </svg>
-                        </a>
-                    </div>
-                    <p id="polarformrechner">
-                        <div>
-                            <form>
-                                <p>Polarform: r*e<sup>i*<sup>ϕ</sub></sup></p>
-                                <p>r: <input type="number" id="r" placeholder="r"></p>
-                                <p>ϕ: <input type="number" id="phi" placeholder="ϕ"></p>
-                                <input type="button" onclick="pformtonumCalc()" value="Calculate">
-                                <p id="ansNormalform">Antwort</p>
-                            </form>
-
-                        </div>
-    
-                    </p>
+                    </a>
                 </div>
-                <!--<a href="#!" class="outside-trigger"></a>-->
+                <p id="polarformrechner">
+                    <div>
+                        <form>
+                            <p>Polarform: r*e<sup>i*<sup>ϕ</sub></sup></p>
+                            <p>r: <input type="number" id="r" placeholder="r"></p>
+                            <p>ϕ: <input type="number" id="phi" placeholder="ϕ"></p>
+                            <input type="button" onclick="pformtonumCalc()" value="Calculate">
+                            <p id="ansNormalform">Antwort</p>
+                        </form>
+
+                    </div>
+
+                </p>
             </div>
-        <!--<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>-->
+        </div>
+
+        <div class="modal-wrapper" id="gradbogenmass">
+            <div class="modal-body card">
+                <div class="modal-header">
+                    <h2 class="heading">Grad-Bogenmass Umrechner</h2>
+                    <a href="#!" role="button" class="close" aria-label="close this modal">
+                        <svg viewBox="0 0 24 24">
+                                <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
+                            </svg>
+                    </a>
+                </div>
+                <p id="gradbogenmassumrech">
+                    <div>
+                        <form>
+                            <p>Hinweis: Gib das Bogenmass in Dezimalstellen an (Ohne π): <b>2</b>π = <b>360</b>°</p>
+                            <p>Grad <input type="number" id="grad" placeholder="360"></p>
+                            <p>Bogenmass: <input type="number" id="bogenmass" placeholder="2"></p>
+                            <input type="button" onclick="gradbogenmass()" value="Compute">
+                        </form>
+
+                    </div>
+
+                </p>
+            </div>
+        </div>
         <script>
-            function kuerzen33(Zaehler, Nenner)
-                {
-                
+            function kuerzen33(Zaehler, Nenner) {
+
                 var Zaehler33 = parseInt(Zaehler);
                 var Nenner33 = parseInt(Nenner);
 
                 var Teiler33 = 1;
 
-                if(Zaehler33+""=="NaN")
+                if (Zaehler33 + "" == "NaN")
                     Zaehler33 = 0;
-                if(Nenner33+""=="NaN")
+                if (Nenner33 + "" == "NaN")
                     Nenner33 = 0;
 
                 var ZaehlerG33 = Zaehler33;
                 var NennerG33 = Nenner33;
 
-                while(Teiler33<ZaehlerG33&&Teiler33<NennerG33)
-                {
+                while (Teiler33 < ZaehlerG33 && Teiler33 < NennerG33) {
                     Teiler33++;
 
-                        if(ZaehlerG33%Teiler33==0&&NennerG33%Teiler33==0)
-                        {
-                        ZaehlerG33 = ZaehlerG33/Teiler33;
-                        NennerG33 = NennerG33/Teiler33;
+                    if (ZaehlerG33 % Teiler33 == 0 && NennerG33 % Teiler33 == 0) {
+                        ZaehlerG33 = ZaehlerG33 / Teiler33;
+                        NennerG33 = NennerG33 / Teiler33;
                         Teiler33 = 1;
-                        }
+                    }
                 }
-                console.log("Z,N",ZaehlerG33,NennerG33);
-                return [ZaehlerG33,NennerG33];
+                console.log("Z,N", ZaehlerG33, NennerG33);
+                return [ZaehlerG33, NennerG33];
             }
 
             function numtopformCalc() {
@@ -170,100 +193,101 @@
                     var ata = (Math.round(Math.atan(y / x) * 100) / 100);
                     console.log(ata);
                     ata = ata * 100;
-                    if (y>0){
-                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + kuerzen33((ata/3.14),100)[0] + "&frasl;"+ kuerzen33((ata/3.14),100)[1] +"π</sup>";
-                    }
-                    else if (y<0){
-                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>-i*" + kuerzen33((-ata/3.14),100)[0] + "&frasl;"+ kuerzen33((-ata/3.14),100)[1] +"π</sup>";
-                    }
-                    else{
-                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + "0" +"π</sup>";
+                    if (y > 0) {
+                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + kuerzen33((ata / 3.14), 100)[0] + "&frasl;" + kuerzen33((ata / 3.14), 100)[1] + "π</sup>";
+                    } else if (y < 0) {
+                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>-i*" + kuerzen33((-ata / 3.14), 100)[0] + "&frasl;" + kuerzen33((-ata / 3.14), 100)[1] + "π</sup>";
+                    } else {
+                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + "0" + "π</sup>";
                     }
 
                 } else if (x < 0) {
                     var ata = (Math.round(Math.atan(y / x) * 100) / 100);
                     console.log(ata);
                     ata = ata * 100;
-                    if (y>0){
-                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + (parseInt(kuerzen33((-ata/3.14),100)[0])+parseInt(kuerzen33((-ata/3.14),100)[1]/2)) + "&frasl;"+ kuerzen33((-ata/3.14),100)[1] +"π</sup>";
-                    }
-                    else if (y<0){
-                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>-i*" + (parseInt(kuerzen33((ata/3.14),100)[0])+parseInt(kuerzen33((ata/3.14),100)[1]/2)) + "&frasl;"+ kuerzen33((ata/3.14),100)[1] +"π</sup>";
-                    }
-                    else{
-                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" +"π</sup>";
-                    //document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + ata + "π</sup>&frasl;<sub>100</sub></sup>"
+                    if (y > 0) {
+                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + (parseInt(kuerzen33((-ata / 3.14), 100)[0]) + parseInt(kuerzen33((-ata / 3.14), 100)[1] / 2)) + "&frasl;" + kuerzen33((-ata / 3.14), 100)[1] + "π</sup>";
+                    } else if (y < 0) {
+                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>-i*" + (parseInt(kuerzen33((ata / 3.14), 100)[0]) + parseInt(kuerzen33((ata / 3.14), 100)[1] / 2)) + "&frasl;" + kuerzen33((ata / 3.14), 100)[1] + "π</sup>";
+                    } else {
+                        document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + "π</sup>";
+                        //document.getElementById('numtopformAns').innerHTML = Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + ata + "π</sup>&frasl;<sub>100</sub></sup>"
                     }
                 }
             }
+
             function calculate() {
                 var op = (document.getElementById('operations').value);
                 if (op == "plus") {
                     add();
-                } 
-                else if (op == "minus"){
+                } else if (op == "minus") {
                     subtract();
-                }
-                else if (op == "multiply") {
+                } else if (op == "multiply") {
                     multiply();
-                }
-                else if (op == "divide") {
+                } else if (op == "divide") {
                     divide();
                 }
             }
+
             function add() {
                 var r1 = parseFloat(document.getElementById('r-1').value);
                 var phi1 = parseFloat(document.getElementById('phi-1').value);
                 var r2 = parseFloat(document.getElementById('r-2').value);
                 var phi2 = parseFloat(document.getElementById('phi-2').value);
-                var x = getNormalformX(r1,phi1) + getNormalformX(r2,phi2);
-                var y = getNormalformY(r1,phi1) + getNormalformY(r2,phi2);
+                var x = getNormalformX(r1, phi1) + getNormalformX(r2, phi2);
+                var y = getNormalformY(r1, phi1) + getNormalformY(r2, phi2);
 
-                document.getElementById('result').innerHTML = getPolarform(x,y);
+                document.getElementById('result').innerHTML = getPolarform(x, y);
             }
+
             function subtract() {
                 var r1 = parseFloat(document.getElementById('r-1').value);
                 var phi1 = parseFloat(document.getElementById('phi-1').value);
                 var r2 = parseFloat(document.getElementById('r-2').value);
                 var phi2 = parseFloat(document.getElementById('phi-2').value);
-                var x = getNormalformX(r1,phi1) - getNormalformX(r2,phi2);
-                var y = getNormalformY(r1,phi1) - getNormalformY(r2,phi2);
+                var x = getNormalformX(r1, phi1) - getNormalformX(r2, phi2);
+                var y = getNormalformY(r1, phi1) - getNormalformY(r2, phi2);
 
-                document.getElementById('result').innerHTML = getPolarform(x,y);
+                document.getElementById('result').innerHTML = getPolarform(x, y);
             }
+
             function multiply() {
                 var a = parseFloat(document.getElementById('r-1').value);
                 var b = parseFloat(document.getElementById('phi-1').value);
                 var x = parseFloat(document.getElementById('r-2').value);
                 var y = parseFloat(document.getElementById('phi-2').value);
                 var expo = b + y;
-                if (expo<0) {
-                    document.getElementById('result').innerHTML = a*x + "e" + "<sup>-i*" + -expo + "</sup>";
+                if (expo < 0) {
+                    document.getElementById('result').innerHTML = a * x + "e" + "<sup>-i*" + -expo + "</sup>";
                 } else {
-                    document.getElementById('result').innerHTML = a*x + "e" + "<sup>i*" + expo + "</sup>";
+                    document.getElementById('result').innerHTML = a * x + "e" + "<sup>i*" + expo + "</sup>";
                 }
-                
+
             }
+
             function divide() {
                 var r1 = parseFloat(document.getElementById('r-1').value);
                 var phi1 = parseFloat(document.getElementById('phi-1').value);
                 var r2 = parseFloat(document.getElementById('r-2').value);
                 var phi2 = parseFloat(document.getElementById('phi-2').value);
                 var expo = phi1 - phi2;
-                if (expo<0) {
-                    document.getElementById('result').innerHTML = r1/r2 + "e" + "<sup>-i*" + -expo + "</sup>";
+                if (expo < 0) {
+                    document.getElementById('result').innerHTML = r1 / r2 + "e" + "<sup>-i*" + -expo + "</sup>";
                 } else {
-                    document.getElementById('result').innerHTML = r1/r2 + "e" + "<sup>i*" + expo + "</sup>";
+                    document.getElementById('result').innerHTML = r1 / r2 + "e" + "<sup>i*" + expo + "</sup>";
                 }
             }
+
             function getNormalformX(r, phi) {
                 var x = r * Math.cos(phi);
                 return x;
             }
+
             function getNormalformY(r, phi) {
                 var y = r * Math.sin(phi);
                 return y;
             }
+
             function getPolarform(x, y) {
                 var x = parseInt(x);
                 var y = parseInt(y);
@@ -277,37 +301,60 @@
                     var ata = (Math.round(Math.atan(y / x) * 100) / 100);
                     console.log(ata);
                     ata = ata * 100;
-                    if (y>0){
-                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + kuerzen33((ata/3.14),100)[0] + "&frasl;"+ kuerzen33((ata/3.14),100)[1] +"π</sup>";
-                    }
-                    else if (y<0){
-                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>-i*" + kuerzen33((-ata/3.14),100)[0] + "&frasl;"+ kuerzen33((-ata/3.14),100)[1] +"π</sup>";
-                    }
-                    else{
-                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + "0" +"π</sup>";
+                    if (y > 0) {
+                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + kuerzen33((ata / 3.14), 100)[0] + "&frasl;" + kuerzen33((ata / 3.14), 100)[1] + "π</sup>";
+                    } else if (y < 0) {
+                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>-i*" + kuerzen33((-ata / 3.14), 100)[0] + "&frasl;" + kuerzen33((-ata / 3.14), 100)[1] + "π</sup>";
+                    } else {
+                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + "0" + "π</sup>";
                     }
 
                 } else if (x < 0) {
                     var ata = (Math.round(Math.atan(y / x) * 100) / 100);
                     console.log(ata);
                     ata = ata * 100;
-                    if (y>0){
-                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + (parseInt(kuerzen33((-ata/3.14),100)[0])+parseInt(kuerzen33((-ata/3.14),100)[1]/2)) + "&frasl;"+ kuerzen33((-ata/3.14),100)[1] +"π</sup>";
-                    }
-                    else if (y<0){
-                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>-i*" + (parseInt(kuerzen33((ata/3.14),100)[0])+parseInt(kuerzen33((ata/3.14),100)[1]/2)) + "&frasl;"+ kuerzen33((ata/3.14),100)[1] +"π</sup>";
-                    }
-                    else{
-                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" +"π</sup>";
+                    if (y > 0) {
+                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + (parseInt(kuerzen33((-ata / 3.14), 100)[0]) + parseInt(kuerzen33((-ata / 3.14), 100)[1] / 2)) + "&frasl;" + kuerzen33((-ata / 3.14), 100)[1] + "π</sup>";
+                    } else if (y < 0) {
+                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>-i*" + (parseInt(kuerzen33((ata / 3.14), 100)[0]) + parseInt(kuerzen33((ata / 3.14), 100)[1] / 2)) + "&frasl;" + kuerzen33((ata / 3.14), 100)[1] + "π</sup>";
+                    } else {
+                        return Math.round(Math.sqrt((Math.pow(x, 2)) + (Math.pow(y, 2))) * 100) / 100 + "e" + "<sup>i*" + "π</sup>";
                     }
                 }
             }
+
             function pformtonumCalc() {
                 r = parseFloat(document.getElementById('r').value);
                 phi = parseFloat(document.getElementById('phi').value);
-                document.getElementById('ansNormalform').innerHTML = Math.round(getNormalformX(r,phi) * 100) / 100 + "+" + Math.round(getNormalformY(r,phi) * 100) / 100+" i";
+                document.getElementById('ansNormalform').innerHTML = Math.round(getNormalformX(r, phi) * 100) / 100 + "+" + Math.round(getNormalformY(r, phi) * 100) / 100 + " i";
             }
-
+        </script>
+        <script>
+            function gradbogenmass() {
+                //if input with id grad is empty, alert 1; if input with id bogenmass is empty, alert 2;
+                if (document.getElementById('grad').value == "") {
+                    //take value from input with id bogenmass and convert it from radiant to degrees
+                    var bogenma ss = parseFloat(document.getElementById('bogenmass').value);
+                    var grad = bogenmass * 180 / Math.PI;
+                    //round the result to 2 decimal places
+                    grad = Math.round(grad * 100) / 100;
+                    //change p tag with id grad to the rounded result
+                    document.getElementById('grad').value = grad;
+                    console.log(grad)
+                } else if (document.getElementById('bogenmass').value == "") {
+                    //take value from input with id grad and convert it from degrees to radiant
+                    var grad = parseFloat(document.getElementById('grad').value);
+                    var bogenmass = grad * 2 * Math.PI;
+                    //round the result to 2 decimal places
+                    bogenmass = Math.round(bogenmass * 100) / 100;
+                    //change p tag with id bogenmass to the rounded result
+                    document.getElementById('bogenmass').value = bogenmass;
+                }
+                //if none are empty, alert 3
+                else {
+                    alert("Bitte nur ein Eingabefeld füllen!");
+                }
+            }
         </script>
     </body>
 
