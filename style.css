@@ -65,8 +65,8 @@ body {
 }
 
 .navMenu a:nth-child(2):hover~.dot {
-    -webkit-transform: translateX(225px);
-    transform: translateX(225px);
+    -webkit-transform: translateX(230px);
+    transform: translateX(230px);
     -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     opacity: 1;
@@ -364,6 +364,15 @@ code {
     top: 0;
 }
 
-th,td{
-    padding:10px;
+th,
+td {
+    padding: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.homebtn {
+    transform: translateY(12.5px);
 }
