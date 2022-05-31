@@ -19,7 +19,7 @@
         <table>
             <tr>
                 <td>
-                    <a href="#komptopform" role="button" class="button button__link" id="komptopform-btn">Aktivitätsberechnung</a>
+                    <a href="#komptopform" role="button" class="button button__link" id="komptopform-btn">u zu MeV / MeV zu u</a>
                 </td>
                 <td>
                     <a href="#polarformrechner" role="button" class="button button__link" id="polarformrechner-btn">Polarformrechner</a>
@@ -41,7 +41,7 @@
     <div class="modal-wrapper" id="komptopform">
         <div class="modal-body card">
             <div class="modal-header">
-                <h2 class="heading">Komplexe Zahl zur Polarform</h2>
+                <h2 class="heading">u zu MeV / MeV zu U</h2>
                 <a href="#!" role="button" class="close" aria-label="close this modal">
                     <svg viewBox="0 0 24 24">
                             <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
@@ -51,12 +51,10 @@
             <p id="numtopform">
                 <div>
                     <form>
-                        <p>Normalform: x+yi</p>
-                        <p>x: <input type="number" id="numtopform-x" placeholder="x"></p>
-                        <p>y: <input type="number" id="numtopform-y" placeholder="y"></p>
-                        <input type="button" onclick="numtopformCalc()" value="Calculate">
-                        <p id="numtopformAns">Antwort</p>
-
+                        <p>1u = 931.5 </p>
+                        <p>u: <input type="number" id="u" placeholder="1"></p>
+                        <p>MeV: <input type="number" id="MeV" placeholder="931.5"></p>
+                        <input type="button" onclick="calcMeVu()" value="Calculate">
                     </form>
                 </div>
 
@@ -64,6 +62,18 @@
             <!--<a href="#!" class="outside-trigger"></a>-->
         </div>
     </div>
+
+    <script>
+        function calcMeVu() {
+            if (document.getElementById('u').value == "" ) {
+                document.getElementById('u').value = document.getElementById('MeV').value / 931.5;
+            } else if (document.getElementById('MeV').value == "") {
+                document.getElementById('MeV').value = document.getElementById('u').value * 931.5;
+            } else {
+                alert("Please enter only one value");
+            }
+        }
+    </script>
 
 </body>
 
