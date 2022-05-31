@@ -64,14 +64,56 @@
         </div>
     </div>
 
+    <div class="modal-wrapper" id="polarformrechner">
+        <div class="modal-body card">
+            <div class="modal-header">
+                <h2 class="heading">N= rechner</h2>
+                <a href="#!" role="button" class="close" aria-label="close this modal">
+                    <svg viewBox="0 0 24 24">
+                            <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
+                        </svg>
+                </a>
+            </div>
+            <p id="numtopform">
+                <div>
+                    <form>
+                        <img src="N=.jpg" alt="N = N0/2^t/T" style="width: 80px">
+                        <p>N <input type="number" id="N" placeholder="50"></p>
+                        <p>N<sub>0</sub> <input type="number" id="N0" placeholder="100"></p>
+                        <p>t <input type="number" id="t" placeholder="8"></p>
+                        <p>T<sub>1/2</sub> <input type="number" id="T" placeholder="8"></p>
+
+                        <input type="button" onclick="calcN()" value="Calculate">
+                    </form>
+                </div>
+
+            </p>
+            <!--<a href="#!" class="outside-trigger"></a>-->
+        </div>
+    </div>
+
     <script>
         function calcMeVu() {
-            if (document.getElementById('u').value == "" ) {
+            if (document.getElementById('u').value == "") {
                 document.getElementById('u').value = document.getElementById('MeV').value / 931.5;
             } else if (document.getElementById('MeV').value == "") {
                 document.getElementById('MeV').value = document.getElementById('u').value * 931.5;
             } else {
                 alert("Please enter only one value");
+            }
+        }
+
+        function calcN() {
+            if (document.getElementById('N').value == "") {
+                document.getElementById('N').value = document.getElementById('N0').value / 2 ** (document.getElementById('t').value / document.getElementById('T').value);
+            } else if (document.getElementById('N0').value == "") {
+                document.getElementById('N0').value = document.getElementById('N').value * 2 ** (document.getElementById('t').value / document.getElementById('T').value);
+            } else if (document.getElementById('t').value == "") {
+                document.getElementById('t').value = Math.log2(document.getElementById('N').value * document.getElementById('T').value / document.getElementById('N0').value);
+            } else if (document.getElementById('T').value == "") {
+                document.getElementById('T').value = document.getElementById('N').value * document.getElementById('t').value / document.getElementById('N0').value;
+            } else {
+                alert("Please enter ");
             }
         }
     </script>
