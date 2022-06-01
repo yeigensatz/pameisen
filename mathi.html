@@ -80,7 +80,12 @@
                     <form>
                         <p>Polarform: r*e<sup>i*<sup>ϕ</sub></sup></p>
                         <p>r: <input type="number" id="r-1" placeholder="r"></p>
-                        <p>ϕ: <input type="number" id="phi-1" placeholder="ϕ"></p>
+                        <p>ϕ: <input type="number" id="phi-1" placeholder="ϕ">
+                            <select name="piornot" id="piornot">
+                                <option value="pi">in Pi</option>
+                                <option value="numb">als Zahl</option>
+                              </select>
+                        </p>
 
                         <select name="operations" id="operations">
                                     <option value="plus">+</option>
@@ -90,7 +95,12 @@
                                 </select>
 
                         <p>r: <input type="number" id="r-2" placeholder="r"></p>
-                        <p>ϕ: <input type="number" id="phi-2" placeholder="ϕ"></p>
+                        <p>ϕ: <input type="number" id="phi-2" placeholder="ϕ">
+                            <select name="piornot2" id="piornot2">
+                                <option value="pi">in Pi</option>
+                                <option value="numb">als Zahl</option>
+                              </select>
+                        </p>
                         <input type="button" onclick="calculate()" value="Calculate">
                         <p id="result">Antwort</p>
                     </form>
@@ -221,44 +231,60 @@
 
         function calculate() {
             var op = (document.getElementById('operations').value);
-            if (op == "plus") {
-                add();
-            } else if (op == "minus") {
-                subtract();
-            } else if (op == "multiply") {
-                multiply();
-            } else if (op == "divide") {
-                divide();
+            if (document.getElementById("piornot").value == "pi"){
+                var phi1 = document.getElementById('phi-1').value*3.141592;
+            } else {
+                var phi1 = document.getElementById('phi-1').value;
             }
-        }
+            if (document.getElementById("piornot2").value == "pi"){
+                var phi2 = document.getElementById('phi-2').value*3.141592;
+            } else {
+                var phi2 = document.getElementById('phi-2').value;
+            }
+            if (op == "plus") {
+                add(phi1, phi2);
+            } else if (op == "minus") {
+                subtract(phi1, phi2);
+            } else if (op == "multiply") {
+                multiply(phi1, phi2);
+            } else if (op == "divide") {
+                divide(phi1, phi2);
+            }
+            if (document.getElementById("piornot").value == "pi"){
+                document.getElementById('phi-1').value = document.getElementById('phi-1').value*3.141592;
+            } else {
+                pass;
+            }
+            if (document.getElementById("piornot2").value == "pi"){
+                document.getElementById('phi-2').value = document.getElementById('phi-2').value*3.141592;
+            } else {
+                pass;
+            }
 
-        function add() {
+    }
+        function add(phi1, phi2) {
             var r1 = parseFloat(document.getElementById('r-1').value);
-            var phi1 = parseFloat(document.getElementById('phi-1').value);
             var r2 = parseFloat(document.getElementById('r-2').value);
-            var phi2 = parseFloat(document.getElementById('phi-2').value);
             var x = getNormalformX(r1, phi1) + getNormalformX(r2, phi2);
             var y = getNormalformY(r1, phi1) + getNormalformY(r2, phi2);
 
             document.getElementById('result').innerHTML = getPolarform(x, y);
         }
 
-        function subtract() {
+        function subtract(phi1, phi2) {
             var r1 = parseFloat(document.getElementById('r-1').value);
-            var phi1 = parseFloat(document.getElementById('phi-1').value);
             var r2 = parseFloat(document.getElementById('r-2').value);
-            var phi2 = parseFloat(document.getElementById('phi-2').value);
             var x = getNormalformX(r1, phi1) - getNormalformX(r2, phi2);
             var y = getNormalformY(r1, phi1) - getNormalformY(r2, phi2);
 
             document.getElementById('result').innerHTML = getPolarform(x, y);
         }
 
-        function multiply() {
+        function multiply(phi1, phi2) {
             var a = parseFloat(document.getElementById('r-1').value);
-            var b = parseFloat(document.getElementById('phi-1').value);
+            var b = phi1;
             var x = parseFloat(document.getElementById('r-2').value);
-            var y = parseFloat(document.getElementById('phi-2').value);
+            var y = phi2;
             var expo = b + y;
             if (expo < 0) {
                 document.getElementById('result').innerHTML = a * x + "e" + "<sup>-i*" + -expo + "</sup>";
@@ -268,11 +294,9 @@
 
         }
 
-        function divide() {
+        function divide(phi1, phi2) {
             var r1 = parseFloat(document.getElementById('r-1').value);
-            var phi1 = parseFloat(document.getElementById('phi-1').value);
             var r2 = parseFloat(document.getElementById('r-2').value);
-            var phi2 = parseFloat(document.getElementById('phi-2').value);
             var expo = phi1 - phi2;
             if (expo < 0) {
                 document.getElementById('result').innerHTML = r1 / r2 + "e" + "<sup>-i*" + -expo + "</sup>";
