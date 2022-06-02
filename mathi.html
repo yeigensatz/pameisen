@@ -287,9 +287,9 @@
             var y = phi2;
             var expo = b + y;
             if (expo < 0) {
-                document.getElementById('result').innerHTML = a * x + "e" + "<sup>-i*" + -expo + "</sup>";
+                document.getElementById('result').innerHTML = a * x + "e" + "<sup>-i*" + -expo + "π</sup>";
             } else {
-                document.getElementById('result').innerHTML = a * x + "e" + "<sup>i*" + expo + "</sup>";
+                document.getElementById('result').innerHTML = a * x + "e" + "<sup>i*" + expo + "π</sup>";
             }
 
         }
@@ -299,9 +299,9 @@
             var r2 = parseFloat(document.getElementById('r-2').value);
             var expo = phi1 - phi2;
             if (expo < 0) {
-                document.getElementById('result').innerHTML = r1 / r2 + "e" + "<sup>-i*" + -expo + "</sup>";
+                document.getElementById('result').innerHTML = r1 / r2 + "e" + "<sup>-i*" + -expo + "π</sup>";
             } else {
-                document.getElementById('result').innerHTML = r1 / r2 + "e" + "<sup>i*" + expo + "</sup>";
+                document.getElementById('result').innerHTML = r1 / r2 + "e" + "<sup>i*" + expo + "π</sup>";
             }
         }
 
