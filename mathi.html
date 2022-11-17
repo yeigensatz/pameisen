@@ -33,10 +33,15 @@
                 <td>
                     <a href="#gradbogenmass" role="button" class="button button__link" id="gradbogenmass-btn">Grad-Bogenmass Umrechner</a>
                 </td>
+                <td>
+                    <a href="#zsqured" role="button" class="button button__link" id="gradbogenmass-btn">z^2</a>
+                </td>
+                <td>
+                    <a href="#2x2" role="button" class="button button__link" id="2x2-btn">Matrixinverse</a>
+                </td>
             </tr>
         </table>
     </div>
-
 
     <div class="modal-wrapper" id="komptopform">
         <div class="modal-body card">
@@ -152,6 +157,32 @@
             <p id="gradbogenmassumrech">
                 <div>
                     <form>
+                        <p>z:</p>
+                        <p>r: <input type="number" id="r" placeholder="r"></p>
+                        <p>ϕ: <input type="number" id="phi" placeholder="ϕ"></p>
+                        <p>z^2:</p>
+                        <input type="button" onclick="gradbogenmass()" value="Compute">
+                    </form>
+
+                </div>
+
+            </p>
+        </div>
+    </div>
+
+    <div class="modal-wrapper" id="zsquared">
+        <div class="modal-body card">
+            <div class="modal-header">
+                <h2 class="heading">z^2 Rechner</h2>
+                <a href="#!" role="button" class="close" aria-label="close this modal">
+                    <svg viewBox="0 0 24 24">
+                                <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
+                            </svg>
+                </a>
+            </div>
+            <p id="zsquaredrechner">
+                <div>
+                    <form>
                         <p>Hinweis: Gib das Bogenmass in Dezimalstellen an (Ohne π): <b>2</b>π = <b>360</b>°</p>
                         <p>Grad <input type="number" id="grad" placeholder="360"></p>
                         <p>Bogenmass: <input type="number" id="bogenmass" placeholder="6.28"></p>
@@ -164,6 +195,49 @@
             </p>
         </div>
     </div>
+
+    <div class="modal-wrapper" id="2x2">
+        <div class="modal-body card">
+            <div class="modal-header">
+                <h2 class="heading">Matrixinverse</h2>
+                <a href="#!" role="button" class="close" aria-label="close this modal">
+                    <svg viewBox="0 0 24 24">
+                                <path d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z" />
+                            </svg>
+                </a>
+            </div>
+            <p id="2x2umrechner">
+                <div>
+                    <form>
+                        <table>
+                            <tr>
+                                <td><input type="number" id="a" placeholder="a"></td>
+                                <td><input type="number" id="b" placeholder="b"></td>
+                                <td><input type="number" id="c" placeholder="c"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="number" id="d" placeholder="d"></td>
+                                <td><input type="number" id="e" placeholder="e"></td>
+                                <td><input type="number" id="f" placeholder="f"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="number" id="g" placeholder="g"></td>
+                                <td><input type="number" id="h" placeholder="h"></td>
+                                <td><input type="number" id="i" placeholder="i"></td>
+                            </tr>
+                        </table>
+
+
+                        <input type="button" onclick="gradbogenmass()" value="Compute">
+                    </form>
+
+                </div>
+
+            </p>
+        </div>
+    </div>
+
+
     <script>
         function kuerzen33(Zaehler, Nenner) {
 

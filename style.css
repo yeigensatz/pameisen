@@ -355,6 +355,31 @@ code {
     z-index: 1;
 }
 
+#zsquared {
+    opacity: 0;
+    transition: opacity 0.25s ease-in-out;
+    visibility: hidden;
+}
+
+#zsquared:target {
+    opacity: 1;
+    visibility: visible;
+}
+
+#zsquared:target .modal-body {
+    opacity: 1;
+    transform: translateY(1);
+}
+
+#zsquared .komptopform-body {
+    max-width: 500px;
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: opacity 0.25s ease-in-out;
+    width: 100%;
+    z-index: 1;
+}
+
 .outside-trigger {
     bottom: 0;
     cursor: default;
